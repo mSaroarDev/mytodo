@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  @apply poppins-regular text-[14px] bg-[#F0F0F1];
+}
+
+.button-main {
+  @apply bg-[#0E1B40] text-white w-fit px-5 py-2 rounded-md flex items-center gap-2;
+}
+
+input {
+  @apply p-2 bg-slate-50 border-[1px] border-[#0E1B40] rounded-md;
+}
+
+main {
+  @apply w-full max-w-6xl mx-auto;
+}
+
+.sidebar-links {
+  @apply px-3 py-2 hover:bg-orange-50 text-[17px] flex items-center gap-2 w-full;
+}
+
+.active-link {
+  @apply bg-[#292929] text-white hover:text-[#292929];
+}
+
+label {
+  @apply text-[15px] font-bold;
+}
+
+/* loading spinner */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
