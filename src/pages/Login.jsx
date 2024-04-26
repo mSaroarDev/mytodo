@@ -43,11 +43,9 @@ const Login = () => {
       }
     } catch (error) {
       showError("Authentication Failed");
+    } finally {
+      setLoading(false);
     }
-    console.log({
-      email: email,
-      password: password,
-    });
   };
 
   return (
