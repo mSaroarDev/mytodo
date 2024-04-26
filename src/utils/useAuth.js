@@ -1,8 +1,6 @@
-import Cookies from "js-cookie";
-
 const useAuth = () => {
-  const cookie = Cookies.get("session");
-  if (cookie) {
+  const token = localStorage.getItem("token");
+  if (token) {
     return true;
   } else {
     return false;

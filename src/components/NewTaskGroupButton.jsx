@@ -28,8 +28,8 @@ const NewTaskGroupButton = ({ fetchData }) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
-            credentials: "include",
             body: JSON.stringify({ title: taskGroup }),
           });
           if (!response.ok) {

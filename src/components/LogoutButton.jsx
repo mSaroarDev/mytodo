@@ -20,13 +20,9 @@ const LogoutButton = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(
-            import.meta.env.VITE_ENV_API_URL + "/user/logout",
-            {
-              credentials: "include",
-            }
-          );
-          if (res.status === 200) {
+          localStorage.removeItem("token");
+          const token = localStorage.getItem("token");
+          if (!token) {
             showSuccess("Logout Success");
             navigate("/login");
           }

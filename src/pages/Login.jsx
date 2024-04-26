@@ -26,7 +26,6 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
           body: JSON.stringify({
             email: email,
             password: password,
@@ -35,8 +34,10 @@ const Login = () => {
       );
 
       setLoading(false);
+      const response = await res.json();
       if (res.status === 200) {
         showSuccess("Login Success");
+        localStorage.setItem("token", response.token);
         navigate("/user/dashboard");
       } else {
         showError("Invalid username or password");
