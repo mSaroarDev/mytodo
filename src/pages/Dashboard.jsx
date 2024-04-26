@@ -4,11 +4,17 @@ import StatsCard from "../components/StatsCard";
 import getMyTaskGroups from "../libs/getMyTaskGroups";
 import getTasksByGroupId from "../libs/getTasksByGroupId";
 import getAllTasks from "../libs/getAllTasks";
+import Spinner from "../components/spinner/Spinner";
 
 const Dashboard = () => {
+  // const loading
+  const [loading, setLoading] = useState(true);
+
   // get all groups by me
   const [totalGroups, setTotalGroups] = useState(0);
   const [totalTasks, setTotalTasks] = useState(0);
+
+  console.log(totalGroups);
 
   const allGroups = async () => {
     getMyTaskGroups()
@@ -29,15 +35,16 @@ const Dashboard = () => {
   // incompleted task
   const inCompletedTask =
     totalTasks && totalTasks.filter((task) => task.status == "Incomplete");
-  console.log(completedTask);
 
   useEffect(() => {
     allGroups();
     allTasks();
+    setLoading(false);
   }, []);
 
   return (
     <>
+      {loading && <Spinner />}
       <DashboardLayout>
         <div className="__page-header">
           <h2 className="text-[22px] font-bold">Overview</h2>
