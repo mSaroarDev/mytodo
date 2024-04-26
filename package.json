@@ -2,7 +2,7 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://todo.teamsaroar.pw/",
+  "homepage": "https://mytodo24.vercel.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
