@@ -3,6 +3,7 @@ import React from "react";
 import Swal from "sweetalert2";
 import { showError, showSuccess } from "../utils/toastMessage";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const LogoutButton = () => {
   // navigate
@@ -20,11 +21,17 @@ const LogoutButton = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          localStorage.removeItem("token");
-          const token = localStorage.getItem("token");
-          if (!token) {
+          const res = await fetch(
+            import.meta.env.VITE_ENV_API_URL + "/user/logout",
+            {
+              credentials: "include",
+            }
+          );
+          if (res.status === 200) {
             showSuccess("Logout Success");
             navigate("/login");
+          } else {
+            showError("Logout failed");
           }
         } catch (error) {
           showError("Server Error");

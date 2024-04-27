@@ -54,10 +54,10 @@ function App() {
             }
           />
           <Route
-            path="/user/task-group"
+            path="/user/task-group/:folder_id"
             element={
               <ProtectedOutlet>
-                <TaskGroup />
+                <Task />
               </ProtectedOutlet>
             }
           />
