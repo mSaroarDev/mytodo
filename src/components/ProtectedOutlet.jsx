@@ -1,10 +1,10 @@
 import { Outlet, Navigate } from "react-router-dom";
 import useAuth from "../utils/useAuth";
 
-const ProtectedOutlet = () => {
-  const isLogged = useAuth();
+const ProtectedOutlet = ({ children }) => {
+  let isLogged = useAuth();
 
-  return isLogged ? <Outlet /> : <Navigate to="/" />;
+  return isLogged ? children : <Navigate to="/login" />;
 };
 
 export default ProtectedOutlet;

@@ -17,18 +17,50 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           {/* login outlet */}
-          {/* <Route path="/*" element={<LoginOutlet />}> */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          {/* </Route> */}
+
+          <Route
+            path="/login"
+            element={
+              <LoginOutlet>
+                <Login />
+              </LoginOutlet>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <LoginOutlet>
+                <Register />
+              </LoginOutlet>
+            }
+          />
 
           {/* protected outlet */}
-          {/* <Route path="/user/*" element={<ProtectedOutlet />}> */}
-          <Route path="/user/profile" element={<ProfilePage />} />
-          <Route path="/user/dashboard" element={<Dashboard />} />
-          <Route path="/user/task-group" element={<TaskGroup />} />
-          <Route path="/user/task-group/:folder_id" element={<Task />} />
-          {/* </Route> */}
+
+          <Route
+            path="/user/dashboard"
+            element={
+              <ProtectedOutlet>
+                <Dashboard />
+              </ProtectedOutlet>
+            }
+          />
+          <Route
+            path="/user/task-group"
+            element={
+              <ProtectedOutlet>
+                <TaskGroup />
+              </ProtectedOutlet>
+            }
+          />
+          <Route
+            path="/user/task-group"
+            element={
+              <ProtectedOutlet>
+                <TaskGroup />
+              </ProtectedOutlet>
+            }
+          />
         </Routes>
       </Layout>
     </BrowserRouter>
