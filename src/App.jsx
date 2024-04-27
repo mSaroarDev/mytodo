@@ -18,16 +18,16 @@ function App() {
           <Route path="/" element={<Homepage />} />
           {/* login outlet */}
           {/* <Route path="/*" element={<LoginOutlet />}> */}
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           {/* </Route> */}
 
           {/* protected outlet */}
           {/* <Route path="/user/*" element={<ProtectedOutlet />}> */}
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="task-group" element={<TaskGroup />} />
-          <Route path="task-group/:folder_id" element={<Task />} />
+          <Route path="/user/profile" element={<ProfilePage />} />
+          <Route path="/user/dashboard" element={<Dashboard />} />
+          <Route path="/user/task-group" element={<TaskGroup />} />
+          <Route path="/user/task-group/:folder_id" element={<Task />} />
           {/* </Route> */}
         </Routes>
       </Layout>
