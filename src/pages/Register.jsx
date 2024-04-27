@@ -48,7 +48,9 @@ const Register = () => {
 
         setLoading(false);
         const res = await response.json();
-        if (res.msg == "missing fields") {
+        if (res.msg == "User already exist") {
+          showError("User already exist");
+        } else if (res.msg == "missing fields") {
           showError("Please input all fields");
         } else if (res.msg == "duplicate email") {
           showError("This email is already exist");
