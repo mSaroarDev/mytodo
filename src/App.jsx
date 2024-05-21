@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import TaskGroup from "./pages/TaskGroups";
 import Task from "./pages/Task";
-import ProfilePage from "./pages/Profile";
 import ProtectedOutlet from "./components/ProtectedOutlet";
 import LoginOutlet from "./components/LoginOutlet";
 import Homepage from "./pages/Homepage";

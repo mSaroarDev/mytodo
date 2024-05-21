@@ -30,9 +30,9 @@ const NewTaskButton = ({ folder_id, fetchData }) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              // Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-
+            credentials: "include",
             body: JSON.stringify({ title: task, folder_id: folder_id }),
           });
           if (!response.ok) {

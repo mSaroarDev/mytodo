@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { showError, showSuccess } from "../utils/toastMessage";
+import Cookies from "js-cookie";
 
 const Login = () => {
   // states
@@ -38,7 +39,11 @@ const Login = () => {
       const response = await res.json();
       if (res.status === 200) {
         showSuccess("Login Success");
-        localStorage.setItem("token", response.token);
+        Cookies.set("token", response.token, {
+          expires: 7,
+          path: "/",
+        });
+        // localStorage.setItem("token", response.token);
         navigate("/user/dashboard");
       } else {
         showError("Invalid username or password");

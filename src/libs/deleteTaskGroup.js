@@ -5,8 +5,8 @@ export default async function deleteTaskGroup(folder_id) {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+      credentials: "include",
     }
   );
 

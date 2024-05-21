@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DashboardLayout from "../layout/DashboardLayout";
 import StatsCard from "../components/StatsCard";
 import getMyTaskGroups from "../libs/getMyTaskGroups";
-import getTasksByGroupId from "../libs/getTasksByGroupId";
 import getAllTasks from "../libs/getAllTasks";
 import Spinner from "../components/spinner/Spinner";
 
@@ -13,8 +12,6 @@ const Dashboard = () => {
   // get all groups by me
   const [totalGroups, setTotalGroups] = useState(0);
   const [totalTasks, setTotalTasks] = useState(0);
-
-  console.log(totalGroups);
 
   const allGroups = async () => {
     getMyTaskGroups()

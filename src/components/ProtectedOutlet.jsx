@@ -1,10 +1,15 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import useAuth from "../utils/useAuth";
 
 const ProtectedOutlet = ({ children }) => {
-  let isLogged = useAuth();
+  const isLogged = useAuth();
+  console.log(isLogged);
 
-  return isLogged ? children : <Navigate to="/login" />;
+  if (isLogged) {
+    return children;
+  } else {
+    return <Navigate to="/login" />;
+  }
 };
 
 export default ProtectedOutlet;
