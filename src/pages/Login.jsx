@@ -43,7 +43,7 @@ const Login = () => {
           expires: 7,
           path: "/",
         });
-        // localStorage.setItem("token", response.token);
+        localStorage.setItem("token", response.token);
         navigate("/user/dashboard");
       } else {
         showError("Invalid username or password");

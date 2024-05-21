@@ -3,6 +3,9 @@ export default async function getTasksByGroupId(folder_id) {
     `${import.meta.env.VITE_ENV_API_URL}/task/all/${folder_id}`,
     {
       credentials: "include",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     }
   );
 

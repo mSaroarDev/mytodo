@@ -28,6 +28,7 @@ const LogoutButton = () => {
             }
           );
           if (res.status === 200) {
+            localStorage.removeItem("token");
             showSuccess("Logout Success");
             navigate("/login");
           } else {
