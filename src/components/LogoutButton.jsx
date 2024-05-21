@@ -20,23 +20,10 @@ const LogoutButton = () => {
       confirmButtonText: "Logout!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        try {
-          const res = await fetch(
-            import.meta.env.VITE_ENV_API_URL + "/user/logout",
-            {
-              credentials: "include",
-            }
-          );
-          if (res.status === 200) {
-            localStorage.removeItem("token");
-            showSuccess("Logout Success");
-            navigate("/login");
-          } else {
-            showError("Logout failed");
-          }
-        } catch (error) {
-          showError("Server Error");
-        }
+        localStorage.removeItem("token");
+        Cookies.remove("token");
+        showSuccess("Logout Success");
+        navigate("/login");
       }
     });
   };
