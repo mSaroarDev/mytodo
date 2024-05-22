@@ -1,9 +1,9 @@
 .loader {
-  width: 60px;
-  height: 60px;
+  width: 60px !important;
+  height: 60px !important;
   border-radius: 50%;
   display: inline-block;
-  border-top: 3px solid #ff3d00;
+  border-top: 3px solid black !important;
   border-right: 2px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -15,8 +15,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(0.8px); /* Adjust the blur intensity as needed */
-  background-color: rgba(0, 0, 0, 0.08);
+  /* backdrop-filter: blur(0.8px); Adjust the blur intensity as needed */
+  background-color: white;
   z-index: 9999;
 }
 
