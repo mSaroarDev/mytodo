@@ -40,7 +40,6 @@ const Login = () => {
       if (res.status === 200) {
         showSuccess("Login Success");
         Cookies.set("token", response.token, {
-          expires: 7,
           path: "/",
         });
         localStorage.setItem("token", response.token);
