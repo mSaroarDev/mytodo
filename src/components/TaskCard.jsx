@@ -13,12 +13,9 @@ const TaskCard = ({ data, fetchData }) => {
     fetchData();
   };
 
-  // mark as done
+
+  // delete
   const handleDelete = async () => {
-    const isConfirmed = window.confirm(
-      "Are you sure you want to delete the task?"
-    );
-    if (isConfirmed) {
       await deleteTask(data._id)
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
@@ -30,7 +27,6 @@ const TaskCard = ({ data, fetchData }) => {
           timer: 1500
         });
       fetchData();
-    }
   };
 
   // mark done
@@ -45,6 +41,23 @@ const TaskCard = ({ data, fetchData }) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         handleMarkDone();
+        fetchData();
+      }
+    });
+  };
+
+  // mark done
+  const deleteModal = () => {
+    Swal.fire({
+      title: "Do you want to mark as completed?",
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        handleDelete();
         fetchData();
       }
     });
@@ -73,7 +86,7 @@ const TaskCard = ({ data, fetchData }) => {
             )}
 
             <button
-              onClick={handleDelete}
+              onClick={()=> deleteModal()}
               className="bg-red-500 hover:bg-red-500/20 hover:text-red-500 text-white w-fit px-3 py-1 rounded-md transition-all duration-300"
             >
               Delete
