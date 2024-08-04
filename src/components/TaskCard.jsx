@@ -2,19 +2,15 @@ import { CircleChevronRight } from "lucide-react";
 import React from "react";
 import markDone from "../libs/markDone";
 import deleteTask from "../libs/deleteTask";
+import Swal from "sweetalert2";
 
 const TaskCard = ({ data, fetchData }) => {
   // mark as done
   const handleMarkDone = async () => {
-    const isConfirmed = window.confirm(
-      "Are you sure you want to mark as done?"
-    );
-    if (isConfirmed) {
-      await markDone(data._id)
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-      fetchData();
-    }
+    await markDone(data._id)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    fetchData();
   };
 
   // mark as done
@@ -26,9 +22,32 @@ const TaskCard = ({ data, fetchData }) => {
       await deleteTask(data._id)
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
-      alert("Deleted");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Deleted",
+          showConfirmButton: false,
+          timer: 1500
+        });
       fetchData();
     }
+  };
+
+  // mark done
+  const modal = () => {
+    Swal.fire({
+      title: "Do you want to mark as completed?",
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: "Confirm",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        handleMarkDone();
+        fetchData();
+      }
+    });
   };
 
   return (
@@ -46,7 +65,7 @@ const TaskCard = ({ data, fetchData }) => {
               </button>
             ) : (
               <button
-                onClick={handleMarkDone}
+                onClick={()=> modal()}
                 className="bg-[#292929] hover:bg-[#292929]/20 hover:text-[#292929] text-white w-fit px-3 py-1 rounded-md transition-all duration-300"
               >
                 Mark Done
