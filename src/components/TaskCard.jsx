@@ -41,6 +41,13 @@ const TaskCard = ({ data, fetchData }) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         handleMarkDone();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Mark as Done",
+          showConfirmButton: false,
+          timer: 1500
+        });
         fetchData();
       }
     });
